@@ -1,0 +1,4 @@
+ipdb==0.12.3
+ipython==7.11.1
+redis==3.4.1
+requests==2.22.0
