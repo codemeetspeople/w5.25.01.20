@@ -1,3 +1,5 @@
+from math import hypot
+
 class Point:
     __slots__ = ['__x', '__y']
 
@@ -34,6 +36,9 @@ class Point:
 
     def __repr__(self):
         return f'({self.x}, {self.y})'
+
+    def distance(self, other):
+        return round(hypot(self.x - other.x, self.y - other.y), 2)
 
 if __name__ == '__main__':
     point = Point()
