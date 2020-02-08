@@ -1,37 +1,34 @@
-from functools import reduce
+# args -> positional arguments, e.g.: f(x, y, z)
+# kwargs -> key-value arguments, e.g.: f(host='localhost')
 
-def square(x):
-    return x ** 2
+def multiply(*args):
+    result = args[0]
 
-def increment(x):
-    return x + 1
+    for elem in args[1:]:
+        result *= elem
 
-def wrapper(func, array):
-    result = []
-
-    for i in array:
-        result.append(func(i))
     return result
 
-lst = list(range(10))
-print(lst)
-print(list(map(lambda x: x**2, lst)))
-print(list(map(lambda x: x+1, lst)))
 
-def mult(x, y):
-    return x * y
+def make_dsn(user='root', host='localhost', port=53, **kwargs):
+    return f'{user}@{host}:{port}'
 
-def sum1(x, y):
-    return x + y
 
-def wrapper(func, array):
-    result = array[0]
+params = {
+    'user': 'caiman',
+    'host': 'upyachka.ru',
+    'port': 1488,
+    'password': 'Pukan2020'
+}
 
-    for i in array[1:]:
-        result = func(result, i)
-    return result
+def god_like_function(*args, **kwargs):
 
-lst = list(range(1, 11))
-print(lst)
-print(reduce(lambda x, y: x+y, lst))
-print(reduce(lambda x, y: x*y, lst))
+    import ipdb
+    ipdb.set_trace()
+
+    print(multiply(*args))
+    print(make_dsn(**kwargs))
+
+
+god_like_function(1, 2, 3, 4, 5, user='user2', host='ukr.net')
+

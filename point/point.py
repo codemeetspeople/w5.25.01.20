@@ -21,6 +21,14 @@ class Point:
     def y(self, value):
         self.__y = float(value)
 
+    def __eq__(self, other):
+        if not isinstance(other, self.__class__):
+            return NotImplemented
+        return self.x == other.x and self.y == other.y
+
+    def __ne__(self, other):
+        return not self == other
+
     def __str__(self):
         return f'({self.x}, {self.y})'
 
